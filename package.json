@@ -1,0 +1,33 @@
+{
+  "name": "itsg-nuxt-template",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build .playground",
+    "dev": "nuxt dev .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "typecheck": "vue-tsc --noEmit",
+    "postinstall": "nuxt prepare .playground",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.2",
+    "vue": "^3.5.39",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.16.0",
+    "@types/node": "^26.1.0",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.5",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.6"
+  }
+}

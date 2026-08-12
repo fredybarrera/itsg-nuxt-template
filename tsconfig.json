@@ -1,0 +1,20 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "files": [],
+  // El typecheck corre contra el playground (que extiende la capa), así se
+  // verifican tanto los archivos de la capa como los del playground.
+  "references": [
+    {
+      "path": "./.playground/.nuxt/tsconfig.app.json"
+    },
+    {
+      "path": "./.playground/.nuxt/tsconfig.server.json"
+    },
+    {
+      "path": "./.playground/.nuxt/tsconfig.shared.json"
+    },
+    {
+      "path": "./.playground/.nuxt/tsconfig.node.json"
+    }
+  ]
+}
