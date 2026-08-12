@@ -13,9 +13,10 @@ cambio en `master` no le llega a nadie hasta que se etiqueta.
 
 ---
 
-## Sin etiquetar
+## [v1.1.0] — 2026-08-12
 
-Cambios en `master` que todavía no están en ninguna versión.
+Primera versión etiquetada de ITSG DS (el repo nunca se había etiquetado; `v1.0.7` es historial
+heredado del fork de origen, no un tag real de este repositorio).
 
 - **Rebrand a ITSG**: paleta de colores (`app/assets/css/main.css`), mark del navbar (placeholder,
   `AppNavbar.vue`), nombre del paquete/repo y referencias de documentación. Ver README §"Identidad
