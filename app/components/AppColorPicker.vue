@@ -5,16 +5,16 @@ interface Swatch {
 }
 
 const swatches: Swatch[] = [
-  { name: 'Corteza', hex: '#696158' },
-  { name: 'Verde', hex: '#bfb800' },
-  { name: 'Naranja', hex: '#ea7600' },
-  { name: 'Madera', hex: '#dfd1a7' },
-  { name: 'Calipso', hex: '#5dbaa9' },
-  { name: 'Amarillo', hex: '#f3d01c' },
-  { name: 'Rojo', hex: '#b46a5f' },
+  { name: 'Gris', hex: '#64748b' },
+  { name: 'Verde', hex: '#16a34a' },
+  { name: 'Naranja', hex: '#f97316' },
+  { name: 'Gris claro', hex: '#c7d2e0' },
+  { name: 'Calipso', hex: '#0ea5e9' },
+  { name: 'Amarillo', hex: '#eab308' },
+  { name: 'Rojo', hex: '#dc2626' },
 ]
 
-const model = defineModel<string>({ default: '#5dbaa9' })
+const model = defineModel<string>({ default: '#0ea5e9' })
 </script>
 
 <template>

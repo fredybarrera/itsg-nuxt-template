@@ -142,7 +142,7 @@ así el label queda conectado y el borde de error se activa solo:
 </AppFormField>
 
 <AppFormField label="Área">
-  <AppSelect v-model="area" :options="[{ label: 'Forestal', value: 'F' }]" placeholder="Selecciona…" />
+  <AppSelect v-model="area" :options="[{ label: 'Desarrollo', value: 'D' }]" placeholder="Selecciona…" />
 </AppFormField>
 ```
 

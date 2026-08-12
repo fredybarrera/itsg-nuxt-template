@@ -13,7 +13,7 @@ export interface FilterOption {
 export interface FilterDef {
   /** Matches a field on each row. */
   key: string
-  /** Used as the chip prefix, e.g. "Línea: MDF". */
+  /** Used as the chip prefix, e.g. "Área: Backend". */
   label: string
   placeholder: string
   options: FilterOption[]

@@ -13,16 +13,16 @@ const correo = ref('correo-invalido')
 const area = ref<string | number>('')
 const descripcion = ref('')
 const areaOptions: SelectOption[] = [
-  { label: 'Forestal', value: 'Forestal' },
-  { label: 'Celulosa', value: 'Celulosa' },
-  { label: 'Maderas', value: 'Maderas' },
+  { label: 'Desarrollo', value: 'Desarrollo' },
+  { label: 'Infraestructura', value: 'Infraestructura' },
+  { label: 'Soporte', value: 'Soporte' },
 ]
 const errorCorreo = computed(() =>
   correo.value && !correo.value.includes('@') ? 'Ingresa un correo válido.' : undefined
 )
 
 const responsable = ref<ComboboxModel>(null)
-const areasVisibles = ref<ComboboxModel>(['Forestal'])
+const areasVisibles = ref<ComboboxModel>(['Desarrollo'])
 const produccion = ref<number | null>(12480.5)
 const responsables: SelectOption[] = [
   { label: 'Ana Pérez', value: 'aperez' },
@@ -36,18 +36,22 @@ const grupoAsignados = ref<ComboboxValue[]>(['lsoto', 'rdiaz'])
 
 const hoy = new Date()
 const eventos: CalendarEvent[] = [
-  { date: new Date(hoy.getFullYear(), hoy.getMonth(), 3), label: 'Mantención Línea 1', tone: 'warning' },
+  {
+    date: new Date(hoy.getFullYear(), hoy.getMonth(), 3),
+    label: 'Mantenimiento de servidores',
+    tone: 'warning',
+  },
   { date: hoy, label: 'Reunión mensual', tone: 'primary' },
   { date: new Date(hoy.getFullYear(), hoy.getMonth(), 12), label: 'Auditoría interna', tone: 'danger' },
   { date: new Date(hoy.getFullYear(), hoy.getMonth(), 12), label: 'Entrega de reporte', tone: 'success' },
-  { date: new Date(hoy.getFullYear(), hoy.getMonth(), 12), label: 'Corte programado', tone: 'warning' },
+  { date: new Date(hoy.getFullYear(), hoy.getMonth(), 12), label: 'Respaldo programado', tone: 'warning' },
   { date: new Date(hoy.getFullYear(), hoy.getMonth(), 12), label: 'Visita gerencia', tone: 'primary' },
   { date: new Date(hoy.getFullYear(), hoy.getMonth(), 24), label: 'Cierre de mes', tone: 'success' },
 ]
 
 const archivos = ref<FileItem[]>([
-  { name: 'informe-produccion.pdf', size: 1_482_000, url: '#' },
-  { name: 'fotos-linea1.zip', size: 48_210_000, progress: 62 },
+  { name: 'informe-mensual.pdf', size: 1_482_000, url: '#' },
+  { name: 'respaldo-base-datos.zip', size: 48_210_000, progress: 62 },
   { name: 'datos.xlsx', size: 89_500, error: 'Formato no permitido' },
 ])
 function quitarArchivo(_file: FileItem, i: number) {
@@ -56,35 +60,35 @@ function quitarArchivo(_file: FileItem, i: number) {
 
 const archivosSubidos = ref<{ id: number; name: string; size: number }[]>([])
 
-const nodoSeleccionado = ref<string | null>('mdf-l1')
+const nodoSeleccionado = ref<string | null>('servidor-1')
 const jerarquia: TreeNode[] = [
   {
-    key: 'celulosa',
-    label: 'Celulosa',
+    key: 'desarrollo',
+    label: 'Desarrollo',
     icon: 'box',
     children: [
       {
-        key: 'planta-central',
-        label: 'Planta Central',
+        key: 'equipo-backend',
+        label: 'Equipo Backend',
         children: [
-          { key: 'central-l1', label: 'Línea 1', icon: 'chart' },
-          { key: 'central-l2', label: 'Línea 2', icon: 'chart' },
+          { key: 'backend-sprint1', label: 'Sprint 1', icon: 'chart' },
+          { key: 'backend-sprint2', label: 'Sprint 2', icon: 'chart' },
         ],
       },
-      { key: 'planta-valdivia', label: 'Planta Valdivia' },
+      { key: 'equipo-frontend', label: 'Equipo Frontend' },
     ],
   },
   {
-    key: 'maderas',
-    label: 'Maderas',
+    key: 'infraestructura',
+    label: 'Infraestructura',
     icon: 'box',
     children: [
       {
-        key: 'planta-mdf',
-        label: 'Planta MDF',
+        key: 'datacenter-norte',
+        label: 'Datacenter Norte',
         children: [
-          { key: 'mdf-l1', label: 'Línea MDF 1', icon: 'chart' },
-          { key: 'mdf-l2', label: 'Línea MDF 2 (detenida)', icon: 'chart', disabled: true },
+          { key: 'servidor-1', label: 'Servidor 1', icon: 'chart' },
+          { key: 'servidor-2', label: 'Servidor 2 (en mantención)', icon: 'chart', disabled: true },
         ],
       },
     ],
@@ -93,7 +97,7 @@ const jerarquia: TreeNode[] = [
 
 const modalOpen = ref(false)
 const drawerOpen = ref(false)
-const drawerTitulo = ref('Mantención Línea 1')
+const drawerTitulo = ref('Actualización de servidores')
 const drawerPrioridad = ref<string | number>('Media')
 const prioridadOptions: SelectOption[] = [
   { label: 'Alta', value: 'Alta' },
@@ -125,7 +129,7 @@ const check = ref(true)
 const switchOn = ref(false)
 const radio = ref('a')
 const chips = ref(['nuxt', 'tailwind'])
-const color = ref('#3fae9a')
+const color = ref('#0ea5e9')
 const fecha = ref<Date | null>(null)
 const segmento = ref('lista')
 const tab = ref('uno')
@@ -137,9 +141,9 @@ const columns: DataTableColumn[] = [
   { key: 'estado', label: 'Estado' },
 ]
 const rows = [
-  { nombre: 'Proyecto Alfa', area: 'Forestal', estado: 'Activo' },
-  { nombre: 'Proyecto Beta', area: 'Celulosa', estado: 'Pausado' },
-  { nombre: 'Proyecto Gamma', area: 'Maderas', estado: 'Activo' },
+  { nombre: 'Proyecto Alfa', area: 'Desarrollo', estado: 'Activo' },
+  { nombre: 'Proyecto Beta', area: 'Infraestructura', estado: 'Pausado' },
+  { nombre: 'Proyecto Gamma', area: 'Soporte', estado: 'Activo' },
 ]
 const filters: FilterDef[] = [
   {
@@ -147,9 +151,9 @@ const filters: FilterDef[] = [
     label: 'Área',
     placeholder: 'Filtrar por área',
     options: [
-      { label: 'Forestal', value: 'Forestal' },
-      { label: 'Celulosa', value: 'Celulosa' },
-      { label: 'Maderas', value: 'Maderas' },
+      { label: 'Desarrollo', value: 'Desarrollo' },
+      { label: 'Infraestructura', value: 'Infraestructura' },
+      { label: 'Soporte', value: 'Soporte' },
     ],
   },
 ]
@@ -283,8 +287,8 @@ async function probarConfirm() {
             placeholder="Selecciona áreas…"
           />
         </AppFormField>
-        <AppFormField label="Producción mensual" hint="Formato es-CL al salir del campo.">
-          <AppNumberInput v-model="produccion" :decimals="1" :min="0" suffix="m³" placeholder="0,0" />
+        <AppFormField label="Horas facturadas" hint="Formato es-CL al salir del campo.">
+          <AppNumberInput v-model="produccion" :decimals="1" :min="0" suffix="hrs" placeholder="0,0" />
         </AppFormField>
         <AppDatePicker v-model="fecha" />
         <AppChipInput v-model="chips" />
@@ -432,9 +436,9 @@ async function probarConfirm() {
         />
       </div>
       <div class="grid gap-4 md:grid-cols-3">
-        <!-- Dirección ≠ sentido: la flecha baja pero es positivo (menos mermas es mejor) -->
+        <!-- Dirección ≠ sentido: la flecha baja pero es positivo (menos incidencias es mejor) -->
         <KpiTile
-          label="Mermas de proceso"
+          label="Incidencias abiertas"
           value="3.2"
           unit="%"
           trend="down"
@@ -444,9 +448,9 @@ async function probarConfirm() {
         <TrendSparkline :data="[4, 6, 5, 8, 9, 7, 11]" label="Tendencia" />
         <BarChart
           :data="[
-            { label: 'Forestal', value: 42 },
-            { label: 'Celulosa', value: 31 },
-            { label: 'Maderas', value: 18 },
+            { label: 'Desarrollo', value: 42 },
+            { label: 'Infraestructura', value: 31 },
+            { label: 'Soporte', value: 18 },
           ]"
           label="Por área"
         />
@@ -557,7 +561,7 @@ async function probarConfirm() {
 
     <!-- AppDrawer también sirve como panel lateral de edición: título + formulario +
          acciones en #footer. No hace falta un componente aparte para ese caso. -->
-    <AppDrawer v-model:open="drawerOpen" title="Editar mantención">
+    <AppDrawer v-model:open="drawerOpen" title="Editar tarea">
       <div class="flex flex-col gap-4">
         <AppFormField label="Título">
           <AppInput v-model="drawerTitulo" />

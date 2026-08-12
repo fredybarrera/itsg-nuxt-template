@@ -13,7 +13,7 @@ const props = withDefaults(
     /**
      * Color del indicador, independiente de la flecha. Por defecto se deriva de
      * `trend` (up→positive, down→negative); pásalo cuando dirección y sentido no
-     * coincidan, p. ej. mermas o dependencias que bajan (flecha abajo, positivo).
+     * coincidan, p. ej. incidencias o dependencias que bajan (flecha abajo, positivo).
      */
     sentiment?: Sentiment
     size?: Size
