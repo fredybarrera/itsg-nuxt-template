@@ -91,9 +91,21 @@ const jerarquia: TreeNode[] = [
 
 const modalOpen = ref(false)
 const drawerOpen = ref(false)
+const drawerTitulo = ref('Mantención Línea 1')
+const drawerPrioridad = ref<string | number>('Media')
+const prioridadOptions: SelectOption[] = [
+  { label: 'Alta', value: 'Alta' },
+  { label: 'Media', value: 'Media' },
+  { label: 'Baja', value: 'Baja' },
+]
 const botonCargando = ref(false)
 const progreso = ref(64)
 const paginaDemo = ref(3)
+
+function guardarDrawer() {
+  drawerOpen.value = false
+  showToast('Cambios guardados', 'success')
+}
 
 function guardarModal() {
   modalOpen.value = false
@@ -458,7 +470,7 @@ async function probarConfirm() {
           <AppButton variant="danger" @click="showToast('Toast de error', 'error')">Toast error</AppButton>
           <AppButton variant="outline" @click="probarConfirm">Confirm dialog</AppButton>
           <AppButton variant="secondary" @click="modalOpen = true">Abrir modal</AppButton>
-          <AppButton variant="outline" @click="drawerOpen = true">Abrir drawer</AppButton>
+          <AppButton variant="outline" @click="drawerOpen = true">Panel de edición (drawer)</AppButton>
           <AppButton variant="primary" :loading="botonCargando" @click="simularCarga"
             >Guardar (loading)</AppButton
           >
@@ -537,10 +549,20 @@ async function probarConfirm() {
       </template>
     </AppModal>
 
-    <AppDrawer v-model:open="drawerOpen" title="Drawer de ejemplo">
-      <p class="m-0 text-sm text-ink-soft">Panel lateral con focus trap y cierre con Escape.</p>
+    <!-- AppDrawer también sirve como panel lateral de edición: título + formulario +
+         acciones en #footer. No hace falta un componente aparte para ese caso. -->
+    <AppDrawer v-model:open="drawerOpen" title="Editar mantención">
+      <div class="flex flex-col gap-4">
+        <AppFormField label="Título">
+          <AppInput v-model="drawerTitulo" />
+        </AppFormField>
+        <AppFormField label="Prioridad">
+          <AppSelect v-model="drawerPrioridad" :options="prioridadOptions" />
+        </AppFormField>
+      </div>
       <template #footer>
-        <AppButton variant="outline" size="sm" @click="drawerOpen = false">Cerrar</AppButton>
+        <AppButton variant="outline" size="sm" @click="drawerOpen = false">Cancelar</AppButton>
+        <AppButton variant="primary" size="sm" @click="guardarDrawer">Guardar</AppButton>
       </template>
     </AppDrawer>
   </div>

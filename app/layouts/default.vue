@@ -37,6 +37,7 @@ const links: SidebarLink[] = [
       @toggle-sidenav="toggleSidenav"
     >
       <template #actions>
+        <NotificationCenter align="right" />
         <button
           type="button"
           class="flex h-9 w-9 items-center justify-center rounded-(--radius-md) border border-white/15 bg-white/6 text-shell-ink hover:bg-white/15"

@@ -158,9 +158,10 @@ son piezas auxiliares o de composición.
 
 | Componente                       | Notas                                                                                                                                                 |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AppNavbar`                      | Barra superior oscura; props `title`, `subtitle`, `tagline`, `user-name`, slots `#actions` / `#user-menu`. Mark de tablones (SVG inline)              |
+| `AppNavbar`                      | Barra superior oscura; props `title`, `subtitle`, `tagline`, `user-name`, slots `#actions` / `#user-menu`. Mark placeholder (SVG inline)              |
 | `AppSidebar` / `AppSidebarItem`  | Navegación lateral; `links`, `linksSecundarios`, `tituloSecundario`. `children` anidados sin límite; se abren solos si la ruta activa está dentro     |
 | `AppHero`                        | Cabecera con cartela; `size` sm/md/lg, `title`/`subtitle`/`eyebrow`, prop `as` (nivel de encabezado), slot `#actions` y default (p. ej. fila de KPIs) |
+| `NotificationCenter`             | Campanita con dropdown de notificaciones; props `variant` (`bell`/`button`), `align`. Usada en `#actions` de `AppNavbar` en `layouts/default.vue`     |
 | `SidenavItem` / `SkeletonLoader` | Piezas auxiliares del shell                                                                                                                           |
 
 ### Formularios e inputs
