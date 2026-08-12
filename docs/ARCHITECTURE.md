@@ -26,7 +26,7 @@ consumidor heredaría una ruta `/perfil` con datos ficticios.
 ```ts
 // nuxt.config.ts del consumidor
 export default defineNuxtConfig({
-  extends: ['github:ITSolutionsGroup/itsg-nuxt-template#v1.0.7'],
+  extends: ['github:fredybarrera/itsg-nuxt-template#v1.0.7'],
 })
 ```
 

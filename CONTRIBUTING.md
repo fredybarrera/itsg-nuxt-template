@@ -44,7 +44,7 @@ gh pr merge --squash          # la rama se borra sola
 
 ## Publicar una versión
 
-Los consumidores extienden la capa con `extends: ['github:ITSolutionsGroup/itsg-nuxt-template#vX.Y.Z']`,
+Los consumidores extienden la capa con `extends: ['github:fredybarrera/itsg-nuxt-template#vX.Y.Z']`,
 así que **mientras no haya tag, el cambio no le llega a nadie**. Publicar es etiquetar:
 
 ```bash

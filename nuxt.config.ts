@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 
 // Config de la CAPA (Nuxt Layer). La consumen otros proyectos vía
-//   extends: ['github:ITSolutionsGroup/itsg-nuxt-template']
+//   extends: ['github:fredybarrera/itsg-nuxt-template']
 // El playground en .playground/ la extiende para desarrollo/demo.
 //
 // Ojo (gotcha de layers): en nuxt.config, tanto los alias (~/) como las rutas

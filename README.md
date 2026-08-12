@@ -244,8 +244,8 @@ sobreescriben lo que necesiten.
 ```ts
 // nuxt.config.ts del proyecto hijo
 export default defineNuxtConfig({
-  extends: ['github:ITSolutionsGroup/itsg-nuxt-template'],
-  // o una versión fijada:  'github:ITSolutionsGroup/itsg-nuxt-template#v1.0.0'
+  extends: ['github:fredybarrera/itsg-nuxt-template'],
+  // o una versión fijada:  'github:fredybarrera/itsg-nuxt-template#v1.0.0'
   // o una ruta local:       '../itsg-nuxt-template'
 })
 ```
