@@ -54,6 +54,8 @@ function quitarArchivo(_file: FileItem, i: number) {
   archivos.value.splice(i, 1)
 }
 
+const archivosSubidos = ref<{ id: number; name: string; size: number }[]>([])
+
 const nodoSeleccionado = ref<string | null>('mdf-l1')
 const jerarquia: TreeNode[] = [
   {
@@ -304,6 +306,10 @@ async function probarConfirm() {
             <AppRadio v-model="radio" value="b" /> Opción B
           </label>
         </div>
+      </div>
+      <div class="mt-5">
+        <p class="mb-2 text-[13px] font-semibold text-ink">Carga de archivos (AppDropzone)</p>
+        <AppDropzone v-model="archivosSubidos" />
       </div>
       <div class="mt-5">
         <p class="mb-2 text-[13px] font-semibold text-ink">Archivos (AppFileList)</p>
