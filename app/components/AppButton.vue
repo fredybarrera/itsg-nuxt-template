@@ -72,12 +72,13 @@ const atributos = computed(() => {
 })
 
 const variantClasses: Record<Variant, string> = {
-  primary: 'bg-calipso text-white hover:bg-calipso-deep',
+  // bg-calipso / bg-verde (sin -deep) no llegan a 4.5:1 con texto blanco: ver README "Identidad visual".
+  primary: 'bg-calipso-deep text-white hover:opacity-90',
   secondary: 'bg-corteza text-white hover:bg-corteza-dark',
   outline: 'bg-transparent border-line-strong text-ink hover:bg-paper-2',
   ghost: 'bg-transparent border-line-strong text-ink-soft hover:bg-paper-2 hover:text-ink',
   danger: 'bg-rojo-deep text-white hover:opacity-90',
-  success: 'bg-verde text-white hover:bg-verde-deep',
+  success: 'bg-verde-deep text-white hover:opacity-90',
 }
 
 const sizeClasses: Record<Size, string> = {
@@ -89,7 +90,7 @@ const sizeClasses: Record<Size, string> = {
 const classes = computed(() => [
   'inline-flex items-center justify-center gap-2 font-body font-semibold cursor-pointer rounded-full border border-transparent transition-transform active:translate-y-px disabled:opacity-40 disabled:cursor-not-allowed',
   variantClasses[props.variant],
-  props.iconOnly ? 'p-[9px] w-[38px]' : sizeClasses[props.size],
+  props.iconOnly ? 'p-[11px] w-[44px]' : sizeClasses[props.size],
   // El `<span>` no reacciona a la variante `disabled:`, así que se apaga aquí.
   inerte.value ? 'opacity-40 cursor-not-allowed' : '',
   attrs.class,
