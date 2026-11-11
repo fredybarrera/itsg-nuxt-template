@@ -24,8 +24,18 @@ heredado del fork de origen, no un tag real de este repositorio).
 - Documentación: [`../CONTRIBUTING.md`](../CONTRIBUTING.md) y esta carpeta `docs/`.
 - `master` pasa a estar protegida —solo entra por PR, sin push directo ni para el dueño— y GitHub
   borra la rama al mergear.
+- **`AppButton`**: las variantes `primary` y `success` no llegaban a 4.5:1 de contraste con su
+  texto blanco (`bg-calipso`/`bg-verde` daban 2.8:1 y 3.3:1); ahora usan `bg-calipso-deep` /
+  `bg-verde-deep` (5.9:1 y 5.0:1), igual que ya hacía `danger`. El botón `iconOnly` pasa de 38×38px
+  a 44×44px, el mínimo recomendado para blanco táctil.
+- **`AppSidebar`**: gana modo overlay bajo `md` (antes solo alternaba 264px↔64px fijos, nunca se
+  ocultaba) — nuevo prop `mobileOpen` y evento `close`; `layouts/default.vue` ya lo conecta al
+  mismo toggle del navbar. `<main>` deja de tener `margin-left` fijo en mobile.
+- **`AppSidebar`/`AppSidebarItem`**: dos colores fuera de la paleta (`#9d9384`, residuo pre-rebrand;
+  `#ffffff` a mano) reemplazados por `text-shell-ink/60` y `text-shell-ink-strong`.
 
-Afecta a cualquier consumidor que dependiera de los tokens de color o el mark anteriores.
+Afecta a cualquier consumidor que dependiera de los tokens de color o el mark anteriores, o que
+overrideara el ancho/posición de `AppSidebar` por CSS externo.
 
 ## [v1.0.7] — 2026-08-08
 

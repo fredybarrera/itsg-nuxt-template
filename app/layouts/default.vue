@@ -2,10 +2,13 @@
 import type { SidebarLink } from '#itsg/types/sidenav'
 
 const sidenavCollapsed = useState('sidenavCollapsed', () => false)
+// Bajo `md` el sidebar es overlay (oculto por defecto); desde `md` este estado no tiene efecto visual.
+const sidenavMobileOpen = useState('sidenavMobileOpen', () => false)
 const { theme, toggleTheme } = useTheme()
 
 function toggleSidenav() {
   sidenavCollapsed.value = !sidenavCollapsed.value
+  sidenavMobileOpen.value = !sidenavMobileOpen.value
 }
 
 // Personalizar aquí la navegación del proyecto.
@@ -69,10 +72,15 @@ const links: SidebarLink[] = [
         </div>
       </template>
     </AppNavbar>
-    <AppSidebar :collapsed="sidenavCollapsed" :links="links" />
+    <AppSidebar
+      :collapsed="sidenavCollapsed"
+      :mobile-open="sidenavMobileOpen"
+      :links="links"
+      @close="sidenavMobileOpen = false"
+    />
     <main
       class="pt-(--spacing-nav-h) transition-[margin-left] duration-200"
-      :class="sidenavCollapsed ? 'ml-(--spacing-side-w-collapsed)' : 'ml-(--spacing-side-w)'"
+      :class="sidenavCollapsed ? 'md:ml-(--spacing-side-w-collapsed)' : 'md:ml-(--spacing-side-w)'"
     >
       <div class="px-6 py-5">
         <slot />

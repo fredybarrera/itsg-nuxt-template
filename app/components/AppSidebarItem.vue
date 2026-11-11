@@ -30,7 +30,7 @@ const indent = computed(() => (props.collapsed ? undefined : { paddingLeft: `${1
   <div v-if="hasChildren" v-show="!(collapsed && depth > 0)">
     <button
       type="button"
-      class="flex w-full items-center gap-2.5 rounded-(--radius-md) border-y-0 border-r-0 border-l-2 bg-transparent py-2 pr-2.5 text-left font-body text-[13.5px] text-[#ffffff] hover:bg-white/10"
+      class="flex w-full items-center gap-2.5 rounded-(--radius-md) border-y-0 border-r-0 border-l-2 bg-transparent py-2 pr-2.5 text-left font-body text-[13.5px] text-shell-ink-strong hover:bg-white/10"
       :class="[
         isDescendantActive ? 'border-l-calipso font-semibold [&_.icon]:stroke-calipso' : 'border-transparent',
         collapsed ? 'justify-center px-0' : '',
@@ -67,7 +67,7 @@ const indent = computed(() => (props.collapsed ? undefined : { paddingLeft: `${1
     v-else-if="link.to"
     v-show="!(collapsed && depth > 0)"
     :to="link.to"
-    class="flex items-center gap-2.5 rounded-(--radius-md) border-l-2 border-transparent py-2 pr-2.5 text-[13.5px] text-[#ffffff] no-underline hover:bg-white/10 hover:text-white"
+    class="flex items-center gap-2.5 rounded-(--radius-md) border-l-2 border-transparent py-2 pr-2.5 text-[13.5px] text-shell-ink-strong no-underline hover:bg-white/10 hover:text-white"
     active-class="bg-gradient-to-r from-calipso/20 to-transparent border-l-calipso! text-white font-semibold [&_.icon]:stroke-calipso"
     :class="collapsed ? 'justify-center px-0' : ''"
     :style="indent"
